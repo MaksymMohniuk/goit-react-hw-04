@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 const searchBarSchema = Yup.object().shape({
   searchContent: Yup.string().required("Search term is required!"),
@@ -11,6 +12,10 @@ const FORM_INITIAL_VALUES = {
 
 const SearchBar = ({ onSetSearchQuery }) => {
   const handleSubmit = (values) => {
+    if (!values.searchContent.trim()) {
+      toast.error("Необхідно ввести текст для пошуку зображень");
+      return;
+    }
     onSetSearchQuery(values.searchContent);
   };
 
