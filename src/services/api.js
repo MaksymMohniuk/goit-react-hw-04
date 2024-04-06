@@ -8,9 +8,9 @@ export const requestPhotos = async () => {
   return data;
 };
 
-export const requestContentByQuery = async (query = "") => {
+export const requestContentByQuery = async (query = "", page = 1) => {
   const { data } = await axios.get(
-    `https://api.unsplash.com/search/photos/?query=${query}&client_id=oGYzQqArk2YQGtYqQNUjoqd5R_WjC4bentc-JV8nvfk`
+    `https://api.unsplash.com/search/photos/?query=${query}&page=${page}&client_id=oGYzQqArk2YQGtYqQNUjoqd5R_WjC4bentc-JV8nvfk`
   );
   return data;
 };
