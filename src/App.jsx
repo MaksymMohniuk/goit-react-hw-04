@@ -43,6 +43,7 @@ const App = () => {
     }
     fetchContentByQuery();
   }, [query]);
+  console.log(photos);
 
   const onSetSearchQuery = (searchTerm) => {
     setQuery(searchTerm);
