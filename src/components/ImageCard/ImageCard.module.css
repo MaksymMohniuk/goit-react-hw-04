@@ -1,0 +1,16 @@
+.image-card-container {
+  margin-bottom: 20px;
+}
+
+.image-card-image {
+  width: 250px;
+  cursor: pointer;
+}
+
+.image-card-description {
+  margin-top: 10px;
+}
+
+.image-card-likes {
+  font-weight: bold;
+}

@@ -1,39 +1,29 @@
-import { useState } from "react";
 import Modal from "react-modal";
 
-const ImageModal = ({ photos }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
-  const openModal = (photo) => {
-    setSelectedPhoto(photo);
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
+const ImageModal = ({ modalData, modalIsOpen, closeModal, afterOpenModal }) => {
   return (
     <>
-      {photos.map((photo, index) => (
-        <div key={index} onClick={() => openModal(photo)}>
-          <img
-            src={photo.urls.regular}
-            alt={photo.alt_description}
-            width={500}
-          />
-        </div>
-      ))}
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <Modal
+        isOpen={modalIsOpen}
+        style={customStyles}
+        afterOpenModal={afterOpenModal}
+        onRequestClose={closeModal}
+      >
         <div>
           <button onClick={closeModal}>Close Modal</button>
-          {selectedPhoto && (
-            <img
-              width={500}
-              src={selectedPhoto.urls.regular}
-              alt={selectedPhoto.alt_description}
-            />
+          {modalData && (
+            <img width={500} src={modalData.src} alt={modalData.alt} />
           )}
         </div>
       </Modal>
